@@ -7,5 +7,6 @@ public class ExceptionConstants {
     public static final String CLIENT_NOT_CREATED_CODE = "CLIENT_NOT_CREATED";
     public static final String CLIENT_ALREADY_EXIST_CODE = "CLIENT_ALREADY_EXIST";
     public static final String SERVER_ERROR_CODE = "SERVER_ERROR";
+    public static final String PROJECT_INTERNAL_ERROR = "PROJECT_INTERNAL_ERROR";
 
 }

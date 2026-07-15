@@ -12,7 +12,7 @@ public class ClientEntity {
 
     @Id
     private String id;
-    private String name;
-    private int age;
+    private String nombre;
+    private int edad;
     private String email;
 }
