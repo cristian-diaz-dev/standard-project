@@ -27,7 +27,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDTO save(ClientDTO client) throws StandardProjectException {
-        String clientId = validateAndGetClientId(client.getName(), client.getEmail());
+        String clientId = validateAndGetClientId(client.getNombre(), client.getEmail());
         client.setId(clientId);
         ClientEntity clientEntity = clientMapper.toEntity(client);
 

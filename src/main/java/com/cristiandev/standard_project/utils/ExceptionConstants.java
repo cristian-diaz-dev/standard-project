@@ -5,5 +5,6 @@ public class ExceptionConstants {
     public static final String CLIENT_ALREADY_EXIST_MSG = "El cliente ingresado ya existe";
     public static final String CLIENT_NOT_CREATED_CODE = "CLIENT_NOT_CREATED";
     public static final String CLIENT_ALREADY_EXIST_CODE = "CLIENT_ALREADY_EXIST";
+    public static final String PROJECT_INTERNAL_ERROR = "PROJECT_INTERNAL_ERROR";
 
 }
