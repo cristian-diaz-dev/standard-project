@@ -1,6 +1,6 @@
 package com.cristiandev.standard_project.mapper;
 
-import com.cristiandev.standard_project.dto.ClientDTO;
+import com.cristiandev.standard_project.dto.client.ClientDTO;
 import com.cristiandev.standard_project.entity.ClientEntity;
 import org.mapstruct.Mapper;
 

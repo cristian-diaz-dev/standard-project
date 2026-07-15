@@ -18,4 +18,5 @@ public class StandardProjectException extends Exception {
         this.httpStatus = httpStatus;
         this.exceptionCode = exceptionCode;
     }
+
 }
