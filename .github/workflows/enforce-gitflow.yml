@@ -1,0 +1,29 @@
+name: Enforce Branch Merge Rules
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  enforce-gitflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validar merge hacia develop
+        if: github.base_ref == 'develop'
+        run: |
+          if [[ ! "${{ github.head_ref }}" =~ ^(feature|fix)/ ]]; then
+            echo "❌ Error: A la rama 'develop' solo se le pueden hacer merges desde ramas 'feature/*'."
+            exit 1
+          fi
+          echo "✅ Rama de origen válida para develop."
+
+      - name: Validar merge hacia main
+        if: github.base_ref == 'main'
+        run: |
+          if [[ ! "${{ github.head_ref }}" =~ ^(release|hotfix)/ ]]; then
+            echo "❌ Error: A la rama 'main' solo se le pueden hacer merges desde ramas 'release/*' o 'hotfix/*'."
+            exit 1
+          fi
+          echo "✅ Rama de origen válida para main."
