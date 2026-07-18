@@ -29,6 +29,7 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	implementation 'com.h2database:h2'
 	mockitoAgent('org.mockito:mockito-core') { transitive = false }
+
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 	runtimeOnly 'com.mysql:mysql-connector-j'
