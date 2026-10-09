@@ -34,7 +34,7 @@ public class ClientRouterTest {
     @Test
     void saveOkWhenClientSavedSuccess() throws Exception {
 
-        InputStream requestJson = new ClassPathResource("/router/client/ClientSuccessDTO.json").getInputStream();
+        InputStream requestJson = new ClassPathResource("/router/client/ClientRequestSuccess.json").getInputStream();
         InputStream responseJson = new ClassPathResource("/router/client/ClientResponseSuccess.json").getInputStream();
         String request = new String(requestJson.readAllBytes(), UTF_8);
         String response = new String(responseJson.readAllBytes(), UTF_8);
