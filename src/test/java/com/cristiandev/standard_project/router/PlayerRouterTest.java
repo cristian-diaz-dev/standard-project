@@ -1,8 +1,8 @@
 package com.cristiandev.standard_project.router;
 
-import com.cristiandev.standard_project.dto.client.ClientDTO;
-import com.cristiandev.standard_project.router.cliente.ClientRouter;
-import com.cristiandev.standard_project.service.ClientService;
+import com.cristiandev.standard_project.dto.client.PlayerDTO;
+import com.cristiandev.standard_project.router.cliente.PlayerRouter;
+import com.cristiandev.standard_project.service.PlayerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,13 +23,13 @@ import static org.mockito.Mockito.when;
 import static org.springframework.http.HttpStatus.OK;
 
 @ExtendWith(MockitoExtension.class)
-public class ClientRouterTest {
+public class PlayerRouterTest {
 
     @Mock
-    private ClientService clientService;
+    private PlayerService playerService;
 
     @InjectMocks
-    private ClientRouter clientRouter;
+    private PlayerRouter playerRouter;
 
     @Test
     void saveOkWhenClientSavedSuccess() throws Exception {
@@ -38,17 +38,17 @@ public class ClientRouterTest {
         InputStream responseJson = new ClassPathResource("/router/client/ClientResponseSuccess.json").getInputStream();
         String request = new String(requestJson.readAllBytes(), UTF_8);
         String response = new String(responseJson.readAllBytes(), UTF_8);
-        ClientDTO clientRequest = new ObjectMapper().readValue(request, ClientDTO.class);
-        ClientDTO clientResponse = new ObjectMapper().readValue(response, ClientDTO.class);
+        PlayerDTO clientRequest = new ObjectMapper().readValue(request, PlayerDTO.class);
+        PlayerDTO clientResponse = new ObjectMapper().readValue(response, PlayerDTO.class);
 
-        when(clientService.save(any(ClientDTO.class))).thenReturn(clientResponse);
+        when(playerService.save(any(PlayerDTO.class))).thenReturn(clientResponse);
 
-        ResponseEntity<ClientDTO> responseRouter = clientRouter.save(clientRequest);
+        ResponseEntity<PlayerDTO> responseRouter = playerRouter.save(clientRequest);
 
         assertNotNull(response);
         assertEquals(OK, responseRouter.getStatusCode());
         assertEquals(clientResponse, responseRouter.getBody());
 
-        verify(clientService).save(any(ClientDTO.class));
+        verify(playerService).save(any(PlayerDTO.class));
     }
 }
