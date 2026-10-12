@@ -1,12 +1,12 @@
 package com.cristiandev.standard_project.mapper;
 
-import com.cristiandev.standard_project.dto.client.ClientDTO;
-import com.cristiandev.standard_project.entity.ClientEntity;
+import com.cristiandev.standard_project.dto.client.PlayerDTO;
+import com.cristiandev.standard_project.entity.PlayerEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
 
-    ClientEntity toEntity(ClientDTO clientDTO);
-    ClientDTO toDto(ClientEntity clienteDTO);
+    PlayerEntity toEntity(PlayerDTO playerDTO);
+    PlayerDTO toDto(PlayerEntity clienteDTO);
 }

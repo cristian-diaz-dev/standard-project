@@ -8,11 +8,12 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "clientes")
-public class ClientEntity {
+public class PlayerEntity {
 
     @Id
     private String id;
     private String name;
     private int age;
+    private String pokemonBuddy;
     private String email;
 }

@@ -1,7 +1,7 @@
 package com.cristiandev.standard_project.service.impl;
 
-import com.cristiandev.standard_project.dto.client.ClientDTO;
-import com.cristiandev.standard_project.entity.ClientEntity;
+import com.cristiandev.standard_project.dto.client.PlayerDTO;
+import com.cristiandev.standard_project.entity.PlayerEntity;
 import com.cristiandev.standard_project.exception.StandardProjectException;
 import com.cristiandev.standard_project.mapper.ClientMapper;
 import com.cristiandev.standard_project.repository.ClientsRepository;
@@ -22,7 +22,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ClientServiceImplTest {
+public class PlayerServiceImplTest {
 
     @Mock
     private ClientMapper clientMapper;
@@ -31,19 +31,19 @@ public class ClientServiceImplTest {
     private ClientsRepository clientsRepository;
 
     @InjectMocks
-    private ClientServiceImpl clientService;
+    private PlayerServiceImpl clientService;
 
     @Test
     public void saveClientTest() throws IOException, StandardProjectException {
 
         InputStream requestJson = new ClassPathResource("/service/client/ClientServiceImpl/ClientSuccessDTO.json").getInputStream();
         String request = new String(requestJson.readAllBytes(), UTF_8);
-        ClientDTO client = new ObjectMapper().readValue(request, ClientDTO.class);
+        PlayerDTO client = new ObjectMapper().readValue(request, PlayerDTO.class);
 
-        ClientEntity dummyClientEntity = new ClientEntity();
+        PlayerEntity dummyPlayerEntity = new PlayerEntity();
 
-        when(clientMapper.toEntity(any(ClientDTO.class))).thenReturn(dummyClientEntity);
-        when(clientsRepository.saveAndFlush(any(ClientEntity.class))).thenReturn(new ClientEntity());
+        when(clientMapper.toEntity(any(PlayerDTO.class))).thenReturn(dummyPlayerEntity);
+        when(clientsRepository.saveAndFlush(any(PlayerEntity.class))).thenReturn(new PlayerEntity());
 
         assertDoesNotThrow(() -> clientService.save(client));
 
