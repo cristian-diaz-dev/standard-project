@@ -26,3 +26,7 @@ spring:
   logging:
     level:
       org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator: WARN
+restclient:
+  pokeapi:
+    base:
+      url: https://pokeapi.co/api/v2

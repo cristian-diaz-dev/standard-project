@@ -1,11 +1,13 @@
 package com.cristiandev.standard_project.service.impl;
 
-import com.cristiandev.standard_project.dto.client.ClientDTO;
-import com.cristiandev.standard_project.entity.ClientEntity;
+import com.cristiandev.standard_project.dto.client.PlayerDTO;
+import com.cristiandev.standard_project.dto.pokemon.PokemonDTO;
+import com.cristiandev.standard_project.entity.PlayerEntity;
 import com.cristiandev.standard_project.exception.StandardProjectException;
 import com.cristiandev.standard_project.mapper.ClientMapper;
 import com.cristiandev.standard_project.repository.ClientsRepository;
-import com.cristiandev.standard_project.service.ClientService;
+import com.cristiandev.standard_project.service.PlayerService;
+import com.cristiandev.standard_project.service.PokemonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,26 +15,28 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 import static com.cristiandev.standard_project.utils.ExceptionConstants.*;
-import static com.cristiandev.standard_project.utils.LogConstants.EXCEPTION_LOG_MSG;
-import static org.springframework.http.HttpStatus.*;
+import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.FAILED_DEPENDENCY;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ClientServiceImpl implements ClientService {
+public class PlayerServiceImpl implements PlayerService {
 
     private final ClientMapper clientMapper;
     private final ClientsRepository clientsRepository;
+    private final PokemonService pokemonService;
 
     @Override
-    public ClientDTO save(ClientDTO client) throws StandardProjectException {
+    public PlayerDTO save(PlayerDTO client) throws StandardProjectException {
         String clientId = validateAndGetClientId(client.getName(), client.getEmail());
         client.setId(clientId);
-        ClientEntity clientEntity = clientMapper.toEntity(client);
+        PokemonDTO pokemonBuddy = pokemonService.getPokemon();
+        client.setPokemonBuddy(pokemonBuddy.getName());
+        PlayerEntity playerEntity = clientMapper.toEntity(client);
 
         try {
-            clientsRepository.saveAndFlush(clientEntity);
+            clientsRepository.saveAndFlush(playerEntity);
         } catch (Exception e) {
             throw new StandardProjectException(CLIENT_NOT_CREATED_MSG, FAILED_DEPENDENCY,
                     CLIENT_NOT_CREATED_CODE);

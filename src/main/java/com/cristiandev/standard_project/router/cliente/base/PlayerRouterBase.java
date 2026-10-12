@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import static com.cristiandev.standard_project.router.cliente.base.ClientRouterBase.*;
+import static com.cristiandev.standard_project.router.cliente.base.PlayerRouterBase.*;
 
 @RequestMapping(API_BASE_PATH)
-public abstract class ClientRouterBase {
+public abstract class PlayerRouterBase {
 
     public static final String API_BASE_PATH = "/api/v1/clientes";
     protected static final String SAVE = "/save";

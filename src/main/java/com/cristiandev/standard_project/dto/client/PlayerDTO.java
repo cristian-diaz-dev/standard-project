@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ClientDTO {
+public class PlayerDTO {
 
     private String id;
 
@@ -24,5 +24,7 @@ public class ClientDTO {
 
     @Email(message = "El campo email debe cumplir con un formato válido de correo electrónico")
     private String email;
+
+    private String pokemonBuddy;
 
 }
