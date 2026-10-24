@@ -27,8 +27,7 @@ public class PokemonServiceImpl implements PokemonService {
         try {
             PokemonResponseDTO response = pokeApiRestClient.getPokemons(OFFSET, LIMIT);
             int index = (int) (Math.random() * response.getResults().size());
-            PokemonDTO clientPokemon = response.getResults().get(index);
-            return clientPokemon;
+            return response.getResults().get(index);
         } catch (Exception e) {
             throw new StandardProjectException(POKEMON_FETCH_MSG, FAILED_DEPENDENCY, POKEMON_FETCH_ERROR);
         }
